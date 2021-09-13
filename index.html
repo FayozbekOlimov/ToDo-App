@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__top">
+                <h1 class="header__title">Todo</h1>
+                <div class="header__mode">
+                    <img class="header__mode-img" src="./images/icon-sun.svg">
+                </div>
+            </div>
+            <div class="header__createTodo">
+                <div class="header__check" onclick = "checked(this)"></div>
+                <input class="header__input" type="text" placeholder="Create a new todo ..." autofocus>
+            </div>
+            <div class="header__main">
+                <ul class="header__list">
+                    <li class="header__item header__createTodo">
+                        <div class="header__check" onclick = "checked(this)"></div>
+                        <p class="header__content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <div class="header__icon"  onclick="remove(this)">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                    <li class="header__item header__createTodo">
+                        <div class="header__check" onclick = "checked(this)"></div>
+                        <p class="header__content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <div class="header__icon"  onclick="remove(this)">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                    <li class="header__item header__createTodo">
+                        <div class="header__check" onclick = "checked(this)"></div>
+                        <p class="header__content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <div class="header__icon"  onclick="remove(this)">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                    <li class="header__item header__createTodo">
+                        <div class="header__check" onclick = "checked(this)"></div>
+                        <p class="header__content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <div class="header__icon"  onclick="remove(this)">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                    <li class="header__item header__createTodo">
+                        <div class="header__check" onclick = "checked(this)"></div>
+                        <p class="header__content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                        <div class="header__icon"  onclick="remove(this)">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                    <div class="header__filter header__createTodo">
+                        <div class="header__filter-left"><span id="left-number">5</span> items left</div>
+                        <div class="header__filter-sort">
+                            <span id="sort-all" class="sort-item active">All</span>
+                            <span id="sort-active" class="sort-item">Active</span>
+                            <span id="sort-completed" class="sort-item">Completed</span>
+                        </div>
+                        <div class="header__filter-clear">Clear Completed</div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- JavaScript -->
+    <script src="./index.js"></script>
+</body>
+</html>

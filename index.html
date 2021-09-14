@@ -18,15 +18,15 @@
                 </div>
             </div>
             <div class="header__createTodo">
-                <div class="header__check" onclick = "checked(this)"></div>
-                <input class="header__input" type="text" placeholder="Create a new todo ..." autofocus>
+                <div class="header__check" id="header__check" onclick="addTodo()"></div>
+                <input class="header__input" type="text" placeholder="Create a new todo . . ." autofocus>
             </div>
             <div class="header__main">
                 <ul class="header__list">
                     <li class="header__item header__createTodo">
                         <div class="header__check" onclick = "checked(this)"></div>
                         <p class="header__content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Complete online JavaScript course
                         </p>
                         <div class="header__icon"  onclick="remove(this)">
                             <span></span>
@@ -36,7 +36,7 @@
                     <li class="header__item header__createTodo">
                         <div class="header__check" onclick = "checked(this)"></div>
                         <p class="header__content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Jog around the park 3x
                         </p>
                         <div class="header__icon"  onclick="remove(this)">
                             <span></span>
@@ -46,7 +46,7 @@
                     <li class="header__item header__createTodo">
                         <div class="header__check" onclick = "checked(this)"></div>
                         <p class="header__content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            10 minutes mediation
                         </p>
                         <div class="header__icon"  onclick="remove(this)">
                             <span></span>
@@ -56,7 +56,7 @@
                     <li class="header__item header__createTodo">
                         <div class="header__check" onclick = "checked(this)"></div>
                         <p class="header__content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Read for 1 hour
                         </p>
                         <div class="header__icon"  onclick="remove(this)">
                             <span></span>
@@ -66,9 +66,9 @@
                     <li class="header__item header__createTodo">
                         <div class="header__check" onclick = "checked(this)"></div>
                         <p class="header__content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Listening to music
                         </p>
-                        <div class="header__icon"  onclick="remove(this)">
+                        <div class="header__icon" onclick="remove(this)">
                             <span></span>
                             <span></span>
                         </div>
@@ -80,7 +80,7 @@
                             <span id="sort-active" class="sort-item">Active</span>
                             <span id="sort-completed" class="sort-item">Completed</span>
                         </div>
-                        <div class="header__filter-clear">Clear Completed</div>
+                        <div class="header__filter-clear" onclick="clearCompleteds()">Clear Completed</div>
                     </div>
                 </ul>
             </div>

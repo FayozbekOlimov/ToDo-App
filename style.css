@@ -105,23 +105,12 @@ img {
     cursor: pointer;
 }
 
-.header__check:hover::before,
-.header__check:hover::after {
-    content: "";
-    border-radius: 50%;
-    position: absolute;
-}
-
 .header__check::before {
     left: -1px;
     top: -1px;
     right: -1px;
     bottom: -1px;
     background-image: linear-gradient(135deg, aqua, purple);
-}
-
-.header__check.no-before::before {
-    display: none;
 }
 
 .header__check::after {
@@ -132,28 +121,33 @@ img {
     background-color: var(--primary-color);
 }
 
+#header__check:hover {
+    background-image: url("./images/icon-check.svg"), linear-gradient(135deg, aqua, purple);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#header__check:hover::before,
+#header__check:hover::after {
+    display: none;
+}
+
+.header__check:hover::before,
+.header__check:hover::after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+}
+
 .checked {
     background-image: url("./images/icon-check.svg"), linear-gradient(135deg, aqua, purple);
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.header__check:hover {
-    border-color: transparent;
-}
-
-.header__check:hover::before,
-.header__check:hover::after {
-    display: block;
-}
-
 .header__check.checked:hover::before,
 .header__check.checked:hover::after {
     display: none;
-}
-
-.header__check.checked:hover {
-    border: 1px solid var(--secondary-color);
 }
 
 .header__check.checked + .header__content {

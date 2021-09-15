@@ -108,15 +108,26 @@ function clearCompleteds(){
     for(let i = completeds.length - 1; i >= 0; i--) {
         completeds[i].parentElement.remove();
     }
+    removeFilter();
 }
 
 /* ============ THE NUMBER OF TODOS LEFT ============ */
 function todoItemPlus() {
     leftTodoItems++;
     document.getElementById('left-number').innerText = leftTodoItems;
+    removeFilter();
 }
 
 function todoItemMinus() {
     leftTodoItems--;
     document.getElementById('left-number').innerText = leftTodoItems;
+    removeFilter();
+}
+
+function removeFilter() {
+    if(todoList.querySelectorAll('li').length === 0) {
+        todoList.lastElementChild.classList.add('hide');
+    } else {
+        todoList.lastElementChild.classList.remove('hide');
+    }
 }

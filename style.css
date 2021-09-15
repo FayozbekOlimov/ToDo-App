@@ -249,6 +249,10 @@ img {
     transform-origin: center center;
 }
 
+.header__check.checked ~ .header__icon span {
+    background-color: var(--secondary-color);
+}
+
 .header__icon span:nth-child(1) {
     transform: rotate(45deg);
 }
@@ -265,6 +269,10 @@ img {
     padding: 5px;
     margin-bottom: 0;
     color: var(--secondary-color);
+}
+
+.header__filter.hide {
+    display: none;
 }
 
 .header__filter-left {

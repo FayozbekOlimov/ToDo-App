@@ -28,7 +28,7 @@
                         <p class="header__content">
                             Complete online JavaScript course
                         </p>
-                        <div class="header__icon"  onclick="remove(this)">
+                        <div class="header__icon"  onclick="removeTodo(this)">
                             <span></span>
                             <span></span>
                         </div>
@@ -38,7 +38,7 @@
                         <p class="header__content">
                             Jog around the park 3x
                         </p>
-                        <div class="header__icon"  onclick="remove(this)">
+                        <div class="header__icon"  onclick="removeTodo(this)">
                             <span></span>
                             <span></span>
                         </div>
@@ -48,7 +48,7 @@
                         <p class="header__content">
                             10 minutes mediation
                         </p>
-                        <div class="header__icon"  onclick="remove(this)">
+                        <div class="header__icon"  onclick="removeTodo(this)">
                             <span></span>
                             <span></span>
                         </div>
@@ -58,7 +58,7 @@
                         <p class="header__content">
                             Read for 1 hour
                         </p>
-                        <div class="header__icon"  onclick="remove(this)">
+                        <div class="header__icon"  onclick="removeTodo(this)">
                             <span></span>
                             <span></span>
                         </div>
@@ -68,21 +68,21 @@
                         <p class="header__content">
                             Listening to music
                         </p>
-                        <div class="header__icon" onclick="remove(this)">
+                        <div class="header__icon" onclick="removeTodo(this)">
                             <span></span>
                             <span></span>
                         </div>
                     </li>
-                    <div class="header__filter header__createTodo">
-                        <div class="header__filter-left"><span id="left-number">5</span> items left</div>
-                        <div class="header__filter-sort">
-                            <span id="sort-all" class="sort-item active">All</span>
-                            <span id="sort-active" class="sort-item">Active</span>
-                            <span id="sort-completed" class="sort-item">Completed</span>
-                        </div>
-                        <div class="header__filter-clear" onclick="clearCompleteds()">Clear Completed</div>
-                    </div>
                 </ul>
+                <div class="header__filter header__createTodo">
+                    <div class="header__filter-left"><span id="left-number">5</span> items left</div>
+                    <div class="header__filter-sort">
+                        <span id="sort-all" class="sort-item active">All</span>
+                        <span id="sort-active" class="sort-item">Active</span>
+                        <span id="sort-completed" class="sort-item">Completed</span>
+                    </div>
+                    <div class="header__filter-clear" onclick="clearCompleteds()">Clear Completed</div>
+                </div>
             </div>
         </div>
     </header>

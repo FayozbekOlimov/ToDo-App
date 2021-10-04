@@ -184,13 +184,13 @@ img {
 
 .header__main {
     width: 100%;
+    border-radius: .3rem;
+    box-shadow: 0 0 20px rgba(0,0,0,.4);
 }
 
 .header__list {
     list-style: none;
     color: var(--secondary-color);
-    border-radius: .3rem;
-    box-shadow: 0 0 20px rgba(0,0,0,.4);
 }
 
 .header__item {
@@ -199,14 +199,11 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .header__item.hide {
     display: none;
-}
-
-.header__item:not(:last-child) {
-    border-bottom: 1px solid var(--secondary-color);
 }
 
 .header__item:first-child {

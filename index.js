@@ -22,8 +22,8 @@ document.getElementById('left-number').innerText = leftTodoItems;
 const input = document.querySelector('.header__input');
 const todoList = document.querySelector('.header__list');
 
-document.addEventListener('keydown', function (e) {
-    if (e.keyCode === 13)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter')
         addTodo();
 });
 
@@ -36,16 +36,16 @@ function addTodo() {
             <p class="header__content">
                 ${input.value.charAt().toUpperCase() + input.value.slice(1)}
             </p>
-            <div class="header__icon"  onclick="remove(this)">
+            <div class="header__icon"  onclick="removeTodo(this)">
                 <span></span>
                 <span></span>
             </div>
         `;
 
-        document.querySelector('.header__filter').insertAdjacentElement('beforebegin', li);
+        todoList.appendChild(li);
         input.value = '';
 
-        todoItemPlus();
+        todoItemCounter('+');
     }
 }
 
@@ -54,17 +54,19 @@ function checked(e) {
     e.classList.toggle('checked');
 
     if(e.className.includes('checked'))
-        todoItemMinus();
+        todoItemCounter('-');
     else
-        todoItemPlus();
+        todoItemCounter('+');
 }
 
 /* ============ REMOVE TODO FUNCTION ============ */
-function remove(e) {
+function removeTodo(e) {
     e.parentElement.remove();
 
     if(!e.parentElement.firstElementChild.className.includes('checked'))
-        todoItemMinus();
+        todoItemCounter('-');
+
+    removeFilter();
 }
 
 /* ============ FILTER TODO FUNCTIONS ============ */
@@ -83,16 +85,17 @@ for(let i = 0; i < sortItem.length; i++) {
         for(let i = 0; i < todoItem.length; i++) {
             todoItem[i].classList.add('hide');
 
-            switch (this.innerText) {
-                case 'All':
+            switch (this.id) {
+                case 'sort-all':
                     todoItem[i].classList.remove('hide');
                     break;
-                case 'Completed':
+                case 'sort-completed':
                     if(todoItem[i].firstElementChild.className.includes('checked')) {
+                        console.log(todoItem[i]);
                         todoItem[i].classList.remove('hide');
                     }
                     break;
-                case 'Active':
+                case 'sort-active':
                     if(!todoItem[i].firstElementChild.className.includes('checked')) {
                         todoItem[i].classList.remove('hide');
                     }
@@ -112,22 +115,19 @@ function clearCompleteds(){
 }
 
 /* ============ THE NUMBER OF TODOS LEFT ============ */
-function todoItemPlus() {
-    leftTodoItems++;
-    document.getElementById('left-number').innerText = leftTodoItems;
-    removeFilter();
-}
-
-function todoItemMinus() {
-    leftTodoItems--;
+function todoItemCounter(operator) {
+    if(operator == '+')
+        leftTodoItems++;
+    if(operator == '-')
+        leftTodoItems--;
     document.getElementById('left-number').innerText = leftTodoItems;
     removeFilter();
 }
 
 function removeFilter() {
     if(todoList.querySelectorAll('li').length === 0) {
-        todoList.lastElementChild.classList.add('hide');
+        todoList.nextElementSibling.classList.add('hide');
     } else {
-        todoList.lastElementChild.classList.remove('hide');
+        todoList.nextElementSibling.classList.remove('hide');
     }
 }

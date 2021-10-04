@@ -181,3 +181,7 @@ function removeFilter() {
         todoList.nextElementSibling.classList.remove('hide');
     }
 }
+
+new Sortable(todoList, {
+    animation: 350,
+});

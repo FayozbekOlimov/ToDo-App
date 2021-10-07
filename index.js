@@ -28,7 +28,7 @@ if (localStorage.getItem('todos')) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && input.value.trim())
+    if (e.key === 'Enter')
         addTodo();
 });
 
@@ -36,10 +36,11 @@ loadFromLocalStorage();
 
 /* ============ ADD TODO IN LOCALSTORAGE ============ */
 function addTodo() {
-    createTodo(input.value);
-
-    todos.push(input.value.trim());
-    localStorage.setItem('todos', JSON.stringify(todos));
+    if(input.value.trim()) {
+        createTodo(input.value.trim());
+        todos.push(input.value.trim());
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
 
     input.value = '';
 }

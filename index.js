@@ -23,22 +23,27 @@ const input = document.querySelector('.header__input');
 const todoList = document.querySelector('.header__list');
 let todos = [];
 
-if (localStorage.getItem('todos')) {
-    todos = JSON.parse(localStorage.getItem('todos'));
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('todos')) {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    loadFromLocalStorage();
+})
+
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter')
-        addTodo();
+    if (e.key === 'Enter') addTodo();
 });
-
-loadFromLocalStorage();
 
 /* ============ ADD TODO IN LOCALSTORAGE ============ */
 function addTodo() {
-    if(input.value.trim()) {
-        createTodo(input.value.trim());
-        todos.push(input.value.trim());
+    if (input.value.trim()) {
+        const todo = {
+            item: input.value.trim(),
+            checked: false
+        };
+        createTodo(todo);
+        todos.push(todo);
         localStorage.setItem('todos', JSON.stringify(todos));
     }
 
@@ -58,19 +63,18 @@ function loadFromLocalStorage() {
 }
 
 /* ============ CREATE TODO FUNCTION ============ */
-function createTodo(text) {
+function createTodo(todo) {
+    console.log(todo, 1111);
     const li = document.createElement('li');
     li.className = 'header__item header__createTodo';
     li.innerHTML = `
-                    <div class="header__check" onclick = "checked(this)"></div>
-                    <p class="header__content">
-                        ${text}
-                    </p>
-                    <div class="header__icon"  onclick="removeTodo(this)">
-                        <span></span>
-                        <span></span>
-                    </div>
-                `;
+        <div class='header__check ${todo.checked ? "checked" : ""}' onclick = "checked(this)"></div>
+        <p class="header__content">${todo.item}</p>
+        <div class="header__icon"  onclick="removeTodo(this)">
+            <span></span>
+            <span></span>
+        </div>
+    `;
     todoList.appendChild(li);
     todoItemCounter('+');
 }
@@ -79,33 +83,32 @@ function createTodo(text) {
 function checked(e) {
     e.classList.toggle('checked');
 
-    if (e.className.includes('checked'))
+    const todos = JSON.parse(localStorage.getItem('todos'));
+    const todoText = e.parentElement.innerText.trim();
+
+    if (e.className.includes('checked')) {
+        todos.find(todo => todo.item == todoText).checked = true;
+        localStorage.setItem('todos', JSON.stringify(todos));
         todoItemCounter('-');
-    else
+    } else {
         todoItemCounter('+');
+        todos.find(todo => todo.item == todoText).checked = false;
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
 }
 
 /* ============ REMOVE TODO FUNCTION ============ */
 function removeTodo(e) {
     e.parentElement.remove();
     const todos = JSON.parse(localStorage.getItem('todos'));
-    deleteItem(e.previousElementSibling.innerText.trim(), todos);
+    const deleteItem = e.previousElementSibling.innerText.trim();
+    todos.splice(todos.indexOf({ item: deleteItem }), 1);
     localStorage.setItem('todos', JSON.stringify(todos));
 
     if (!e.parentElement.firstElementChild.className.includes('checked'))
         todoItemCounter('-');
 
     removeFilter();
-}
-
-function deleteItem(item, arr) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] == item) {
-            arr.splice(i, 1);
-            break;
-        }
-    }
-    return arr;
 }
 
 /* ============ FILTER TODO ============ */
@@ -131,7 +134,6 @@ for (let i = 0; i < sortItem.length; i++) {
                     break;
                 case 'sort-completed':
                     if (todoItem.firstElementChild.className.includes('checked')) {
-                        console.log(todoItem);
                         todoItem.classList.remove('hide');
                     }
                     break;
@@ -157,7 +159,7 @@ function clearCompleteds() {
         completeds[i].parentElement.remove();
     }
 
-    const leftTodos = todos.filter(todo => !completedsArr.includes(todo));
+    const leftTodos = todos.filter(todo => !todo.checked);
 
     localStorage.setItem('todos', JSON.stringify(leftTodos));
 
@@ -183,6 +185,4 @@ function removeFilter() {
     }
 }
 
-new Sortable(todoList, {
-    animation: 350,
-});
+new Sortable(todoList, { animation: 350 });

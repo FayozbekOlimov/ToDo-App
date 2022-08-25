@@ -39,7 +39,7 @@ img {
     background-image: url("./images/bg-desktop-dark.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 40vh;
+    height: 250px;
     transition: .3s ease;
 }
 
@@ -184,7 +184,7 @@ img {
 
 .header__main {
     width: 100%;
-    border-radius: .3rem;
+    border-radius: .3rem !important;
     box-shadow: 0 0 20px rgba(0,0,0,.4);
 }
 
@@ -265,7 +265,14 @@ img {
     border-top-right-radius: 0;
     padding: 5px;
     margin-bottom: 0;
+    border-radius:  0 0 0.3rem 0.3rem;
+    background-color: var(--primary-color);
     color: var(--secondary-color);
+}
+
+.border-top {
+    border-top-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
 }
 
 .header__filter.hide {
